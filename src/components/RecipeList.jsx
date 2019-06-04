@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const RecipeList = props => (
   <div className="row mt-5">
@@ -13,6 +14,13 @@ const RecipeList = props => (
             />
           <div className="card-body">
             <h3 className="card-title">{recipe.strMeal.length < 15 ? `${recipe.strMeal}` : `${recipe.strMeal.substring(0, 14)}...`}</h3>
+            <button className="btn btn-link">
+              <Link to={{
+                pathname: `/recipe/${recipe.idMeal}`,
+                state: {recipe: recipe.strMeal }
+              }}>View Ingredients</Link>
+            </button>
+
           </div>
         </div>
       </div>

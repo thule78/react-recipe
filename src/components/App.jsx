@@ -14,6 +14,17 @@ class App extends Component{
     this.setState({recipes: response.data.meals})
   }
 
+  componentDidMount = () => {
+    const json = localStorage.getItem("meals")
+    const jsonMeals = JSON.parse(json);
+    this.setState({recipes: jsonMeals})
+  }
+
+  componentDidUpdate = () => {
+    const recipeString = JSON.stringify(this.state.recipes);
+    localStorage.setItem("meals",recipeString);
+  }
+
   render(){
     return(
       <div className="container">
